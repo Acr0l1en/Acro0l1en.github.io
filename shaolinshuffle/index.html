@@ -1,0 +1,160 @@
+<html><head>
+        </head><body><h1>Shaolin Word Solver</h1>
+        <a href="https://www.youtube.com/@hjklfslol6446">Created by hjklfsl</a>
+        <p>Symbols by the wonderful u/RayPoopertonIII</p>
+        <p>Type the letter you have on the wall and press go</p>
+    
+    
+    
+        
+        <div>
+            <input id="inBox" type="text" maxlength="1">
+            <img onclick="Running()" src="https://static.wixstatic.com/media/89fb25_b471212c978e4115a645fe4f6889196e~mv2.png">
+            <img onclick="Resets()" src="https://static.wixstatic.com/media/89fb25_703a667b2a4e44c58df5a90c3996210f~mv2.png">
+        </div>
+        
+        <p id="Pen"></p>
+        <p id="bcd"></p>
+        <p id="fmod"></p>
+        
+        <div id="iterate"></div>
+        
+        <p id="Voi"></p>
+        
+        
+        <script>
+            var words = ['actors', 'afterlife', 'ancestor', 'arcade', 'arthur', 'audition', 'basement', 'beverlyhills', 'blackcat', 'boat', 'breeder', 'broadway', 'brute', 'bumpercars', 'charms', 'comicbooks', 'crane', 'cryptid', 'dance', 'davidarcher', 'death', 'director', 'disco', 'dragon', 'drcross', 'fairies', 'forgefreeze', 'geyser', 'ghetto', 'harpoon', 'hives', 'inferno', 'katana', 'kevinsmith', 'kraken', 'kungfu', 'losangeles', 'mcintosh', 'memories', 'mephistopheles', 'newyork', 'nightfall', 'nunchucks', 'obelisk', 'octonian', 'pamgrier', 'pinkcat', 'punks', 'ratking', 'realitytv', 'redwoods', 'rollercoaster', 'rollerskates', 'samantha', 'savagemadethis', 'shaolin', 'shield', 'shuffle', 'sixtymillion', 'slasher', 'slide', 'snake', 'spaceland', 'staff', 'subway', 'tiger', 'trees', 'werewolfpoets', 'winonawyler', 'yetieyes', 'zapper'];
+            var count = 0;
+            var i;
+            var j;
+            var insexy = [];
+            var indexy = [];
+            var jk;
+            var w;
+            var joshinYa;
+            var pls;
+            var symbola = "https://static.wixstatic.com/media/89fb25_3e6b4be4fc8c4a0fb11052df70d3bbc0~mv2.png";
+            var symbolb = "https://static.wixstatic.com/media/89fb25_af8813283d9f494ca7eb4e8ad57a5905~mv2.png";
+            var symbolc = "https://static.wixstatic.com/media/89fb25_d56d0990ab8a410eaaba01ef57e48851~mv2.png";
+            var symbold = "https://static.wixstatic.com/media/89fb25_6399fffdf24f466c9725c0a92a517d8b~mv2.png";
+            var symbole = "https://static.wixstatic.com/media/89fb25_7d44374846f54b36a718184167bf57b1~mv2.png";
+            var symbolf = "https://static.wixstatic.com/media/89fb25_84d37fc20d434cf9a228c7c3c0614f46~mv2.png";
+            var symbolg = "https://static.wixstatic.com/media/89fb25_9cb0d99c34b34317ae12c0de85ae763d~mv2.png";
+            var symbolh = "https://static.wixstatic.com/media/89fb25_dafc6c5661654480b1174efbb81c24df~mv2.png";
+            var symboli = "https://static.wixstatic.com/media/89fb25_4b80e461d70d48b89b80f4d0cbb751fb~mv2.png";
+            var symbolj = "https://static.wixstatic.com/media/89fb25_f6027250667b4d7b980b66f6b09b6b3f~mv2.png";
+            var symbolk = "https://static.wixstatic.com/media/89fb25_d842f6d533ec4b21b4e52f9504d3689a~mv2.png";
+            var symboll = "https://static.wixstatic.com/media/89fb25_29ef546833c6468195d2b702858736fa~mv2.png";
+            var symbolm = "https://static.wixstatic.com/media/89fb25_b4cd43f7169e41868c17003a212e2c78~mv2.png";
+            var symboln = "https://static.wixstatic.com/media/89fb25_0b51fc694888459ebbb4ccfb61ce0242~mv2.png";
+            var symbolo = "https://static.wixstatic.com/media/89fb25_e1655fa5f53f4c268bc616be5bd420c4~mv2.png";
+            var symbolp = "https://static.wixstatic.com/media/89fb25_8168c3d746fb47bda303c49351c4f3cb~mv2.png";
+            var symbolq = "https://static.wixstatic.com/media/89fb25_81a0e5e27fdc4f9cb6d7bed68870d778~mv2.png";
+            var symbolr = "https://static.wixstatic.com/media/89fb25_3a3fefa9870d44458a5cc6c869a5c00d~mv2.png";
+            var symbols = "https://static.wixstatic.com/media/89fb25_8b209bde789e4784a1f81583cbc4aa95~mv2.png";
+            var symbolt = "https://static.wixstatic.com/media/89fb25_7c00ef5442f349e4b8f63ef09065427b~mv2.png";
+            var symbolu = "https://static.wixstatic.com/media/89fb25_3a059cde552e43b98d06359fd064d148~mv2.png";
+            var symbolv = "https://static.wixstatic.com/media/89fb25_a3016fb88c6441d98fcbac3c2bc81c0c~mv2.png";
+            var symbolw = "https://static.wixstatic.com/media/89fb25_c1bc31a1e1234ea88db57f52034c45c6~mv2.png";
+            var symbolx = "https://static.wixstatic.com/media/89fb25_8cc66ee61b7f4ad499eb30f1c86df7e6~mv2.png";
+            var symboly = "https://static.wixstatic.com/media/89fb25_9c4f98bc8aa94d759f30d23c2e0c1b5d~mv2.png";
+            var symbolz = "https://static.wixstatic.com/media/89fb25_4b7bea3495994e05b1d48b9d95493fb6~mv2.png";
+            
+            // Function called to start operation. Should only be pressed after a letter is in the textbox
+            function Running() {
+                var x;
+                
+                document.getElementById("Pen").innerHTML = "Possible Words: ";
+                
+                //Checks each word to see if it starts with the given letter
+                for (x of words) {
+                    var n = false;
+                    n = x.startsWith(document.getElementById("inBox").value.toLowerCase(),0);
+                    if (n == true) {
+                        //displays possible words as they are found and stores them in indexy
+                        document.getElementById("Pen").innerHTML = document.getElementById("Pen").innerHTML + " " + x;
+                        indexy.push(words.indexOf(x));
+                        //document.getElementById("bcd").innerHTML = indexy.toString();
+                    }
+                }
+                
+                pls = document.getElementById("inBox").value.toLowerCase();
+                Recur();
+                //document.getElementById("fmod").innerHTML = insexy;
+                
+                for (j of insexy) {
+                    var jPic = document.createElement("IMG");
+                    document.getElementById("iterate").appendChild(jPic);
+                    jPic.setAttribute("src", eval("symbol" + j));
+                    jPic.setAttribute("id", j);
+                    jPic.addEventListener("click", function() {
+                        jk = this.getAttribute("id");
+                        document.getElementById("Voi").innerHTML = "Previously Pressed Letter: " + jk;
+                        pls = pls + jk;
+                        Recurt();
+                    });
+                }
+                
+            }
+            
+            function Recurt(){
+                document.getElementById("Pen").innerHTML = "Possible Words: ";
+                indexy = [];
+                for (w of words) {
+                    var bbc = false;
+                    bbc = w.startsWith(pls, 0);
+                    if (bbc == true) {
+                        document.getElementById("Pen").innerHTML = document.getElementById("Pen").innerHTML + " " + w;
+                        indexy.push(words.indexOf(w));
+                    }
+                }
+                
+                Recur();
+                document.getElementById("iterate").innerHTML = "";
+                
+                for (joshinYa of insexy) {
+                    var fPic = document.createElement("IMG");
+                    document.getElementById("iterate").appendChild(fPic);
+                    fPic.setAttribute("src", eval("symbol" + joshinYa));
+                    fPic.setAttribute("id", joshinYa);
+                    fPic.addEventListener("click", function() {
+                        jk = this.getAttribute("id");
+                        document.getElementById("Voi").innerHTML = "Previously Pressed Letter: " + jk;
+                        pls = pls + jk;
+                        Recurt();
+                    })
+                }
+                
+            }
+            
+            function Recur(){
+                count = count + 1;
+                insexy = [];
+                for (i of indexy) {
+                    insexy.push(words[i].charAt(count));
+                }
+            }
+            
+            function Resets() {
+                document.getElementById("Pen").innerHTML = "";
+                document.getElementById("inBox").value = "";
+                count = 0;
+                document.getElementById("bcd").innerHTML = "";
+                document.getElementById("fmod").innerHTML = "";
+                indexy = [];
+                insexy = [];
+                document.getElementById("iterate").innerHTML = "";
+                document.getElementById("Voi").innerHTML = "";
+                //document.getElementById("SW").innerHTML = "";
+            }
+            
+        </script>
+        
+    
+    
+
+   
+
+
+
+</body></html>

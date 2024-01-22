@@ -1,0 +1,428 @@
+<html><head>
+        
+        <style>
+            
+            .wrapper135 {
+                display: grid;
+                grid-template-columns: auto auto auto auto auto;
+                padding: 10px;   
+            }
+            
+            .Chem-Items{
+                visibility: visible;
+            }
+            
+            .screen-container{
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .Lower-Container{
+                display: grid;
+                grid-template-columns: 50% 50%;
+            }
+            
+            .Picture-Style{
+                width: 100%;
+            }
+            
+            .Ques{
+                height: 40px;
+                position: inherit;
+                transform: translateY(15px);
+            }
+            
+            .PleaseBeNormal{
+                height: 60px;
+                position: relative;
+                z-index: -1;
+                transform: translate(-25px,-3px);
+            }
+            
+            .NumImages {
+                height: 100px;
+            }
+            
+        </style>
+        
+        <script>
+            var ChemArray = [-1];
+            var AS1 = -1;
+            
+            //3, 5, 7, same as m number, 10, 12, 13, 14
+            //You get one of the 6 numbers while in the correct color 
+            //Picture of all possible diamonds which are clickable
+            //Big ass Final numbers
+            //Switch from IR to Acetaldehyde
+            
+            function MMults(){
+                document.getElementById("Mults").innerHTML = "";
+                for (let i=2; i<16; i++){
+                    if (i==3||i==5||i==7||i==10||i==12||i==13||i==14||i==document.getElementById("mnum").value) { 
+                        } else {
+                        let mu = i * document.getElementById("mnum").value;
+                        document.getElementById("Mults").innerHTML = document.getElementById("Mults").innerHTML + i + "." + mu + ", ";
+                    }
+                }
+            }
+            
+            function ChemicalSetup(){
+                Reseter();
+                
+                if (document.getElementById("ChemicalSelector").value == "1,3,5") {
+                    document.getElementById("1,1").style.visibility = "visible";
+                    document.getElementById("1,2").style.visibility = "visible";
+                    document.getElementById("1,3").style.visibility = "visible";
+                    document.getElementById("1,5").style.visibility = "visible";
+                    document.getElementById("2,1").style.visibility = "visible";
+                    document.getElementById("2,2").style.visibility = "visible";
+                    document.getElementById("2,5").style.visibility = "visible";
+                    document.getElementById("3,1").style.visibility = "visible";
+                    document.getElementById("3,2").style.visibility = "visible";
+                    document.getElementById("3,5").style.visibility = "visible";
+                    document.getElementById("1,1l").innerHTML = "Motor Oil: ";
+                    document.getElementById("1,2l").innerHTML = "Wheel Cleaner: ";
+                    document.getElementById("1,3l").innerHTML = "Insect Repellent: ";
+                    document.getElementById("2,1l").innerHTML = "Drain Opener: ";
+                    document.getElementById("2,2l").innerHTML = "Phenol: ";
+                    document.getElementById("3,1l").innerHTML = "Phenosulfonic Acid: ";
+                    document.getElementById("3,2l").innerHTML = "Detergent: ";
+                    ChemArray = [13,14,1,-1,5,19,-1,-1,18,4,-1,-1,-1,-1,-1,-1];
+                }  else if (document.getElementById("ChemicalSelector").value == "Octahydro"){
+                    document.getElementById("1,1").style.visibility = "visible";
+                    document.getElementById("1,2").style.visibility = "visible";
+                    document.getElementById("1,5").style.visibility = "visible";
+                    document.getElementById("2,1").style.visibility = "visible";
+                    document.getElementById("2,2").style.visibility = "visible";
+                    document.getElementById("2,5").style.visibility = "visible";
+                    document.getElementById("3,1").style.visibility = "visible";
+                    document.getElementById("3,2").style.visibility = "visible";
+                    document.getElementById("3,3").style.visibility = "visible";
+                    document.getElementById("3,4").style.visibility = "visible";
+                    document.getElementById("3,5").style.visibility = "visible";
+                    document.getElementById("1,1l").innerHTML = "Racing Fuel: ";
+                    document.getElementById("1,2l").innerHTML = "Quarters: ";
+                    document.getElementById("2,1l").innerHTML = "Formaldehyde: ";
+                    document.getElementById("2,2l").innerHTML = "Glass Cleaner: ";
+                    document.getElementById("3,1l").innerHTML = "Hexamine: ";
+                    document.getElementById("3,2l").innerHTML = "Detergent: ";
+                    document.getElementById("3,3l").innerHTML = "Vinegar: ";
+                    document.getElementById("3,4l").innerHTML = "Plant Food: ";
+                    ChemArray = [0,6,-1,-1,21,7,-1,-1,17,4,12,10,-1,-1,-1,-1];
+                }  else if (document.getElementById("ChemicalSelector").value == "3-Methyl") {
+                    document.getElementById("1,1").style.visibility = "visible";
+                    document.getElementById("1,2").style.visibility = "visible";
+                    document.getElementById("1,3").style.visibility = "visible";
+                    document.getElementById("1,5").style.visibility = "visible";
+                    document.getElementById("2,1").style.visibility = "visible";
+                    document.getElementById("2,2").style.visibility = "visible";
+                    document.getElementById("2,3").style.visibility = "visible";
+                    document.getElementById("2,4").style.visibility = "visible";
+                    document.getElementById("2,5").style.visibility = "visible";
+                    document.getElementById("3,1").style.visibility = "visible";
+                    document.getElementById("3,2").style.visibility = "visible";
+                    document.getElementById("3,5").style.visibility = "visible";
+                    document.getElementById("1,1l").innerHTML = "Paint: ";
+                    document.getElementById("1,2l").innerHTML = "Drain Opener: ";
+                    document.getElementById("1,3l").innerHTML = "Detergent: ";
+                    document.getElementById("2,1l").innerHTML = "Methylybenzene: ";
+                    document.getElementById("2,2l").innerHTML = "Baking Soda: ";
+                    document.getElementById("2,3l").innerHTML = "Detergent: ";
+                    document.getElementById("2,4l").innerHTML = "Vinegar: ";
+                    document.getElementById("3,1l").innerHTML = "Dinitro: ";
+                    document.getElementById("3,2l").innerHTML = "Racing Fuel: ";
+                    ChemArray = [11,5,4,-1,16,3,4,12,22,0,-1,-1,-1,-1,-1,-1];
+                }  else if (document.getElementById("ChemicalSelector").value == "Propane") {
+                    document.getElementById("1,1").style.visibility = "visible";
+                    document.getElementById("1,2").style.visibility = "visible";
+                    document.getElementById("1,5").style.visibility = "visible";
+                    document.getElementById("2,1").style.visibility = "visible";
+                    document.getElementById("2,2").style.visibility = "visible";
+                    document.getElementById("2,5").style.visibility = "visible";
+                    document.getElementById("3,1").style.visibility = "visible";
+                    document.getElementById("3,2").style.visibility = "visible";
+                    document.getElementById("3,3").style.visibility = "visible";
+                    document.getElementById("3,5").style.visibility = "visible";
+                    document.getElementById("4,1").style.visibility = "visible";
+                    document.getElementById("4,2").style.visibility = "visible";
+                    document.getElementById("4,5").style.visibility = "visible";
+                    document.getElementById("1,1l").innerHTML = "Vodka: ";
+                    document.getElementById("1,2l").innerHTML = "Pennies: ";
+                    document.getElementById("2,1l").innerHTML = "Racing Fuel: ";
+                    document.getElementById("2,2l").innerHTML = "Quarters: ";
+                    document.getElementById("3,1l").innerHTML = "Formaldehyde: ";
+                    document.getElementById("3,2l").innerHTML = "Acetaldehyde: ";
+                    document.getElementById("3,3l").innerHTML = "Detergent: ";
+                    document.getElementById("4,1l").innerHTML = "Aldehyde Sludge: ";
+                    document.getElementById("4,2l").innerHTML = "Nail Polish Remover: ";
+                    ChemArray = [2,9,-1,-1,0,6,-1,-1,21,15,4,-1,20,8,-1,-1];
+                }
+                
+                AutoSolve();
+                ToSumItUp();
+                
+            }
+            
+            function ToSumItUp() {
+                for (let j = 1; j<5; j++){
+                    document.getElementById(j+",5f").innerHTML = parseInt(document.getElementById(j+",1i").value,10) + parseInt(document.getElementById(j+",2i").value,10) + parseInt(document.getElementById(j+",3i").value,10) + parseInt(document.getElementById(j+",4i").value,10) - document.getElementById("Onum").value;
+                    
+                }
+                
+            }
+            
+            function Reseter() {
+                document.getElementById("wrapper135er").style.visibility = "hidden";
+                for (let j = 1; j<5; j++){
+                    for (let i = 1; i<5; i++){
+                        document.getElementById(j+","+i+"i").value = "0";
+                        document.getElementById(j+","+i).style.visibility = "hidden";
+                        document.getElementById(j+",5f").innerHTML = "0";
+                        document.getElementById(j+",5").style.visibility = "hidden";
+                    }
+                }
+            }
+            
+            function AutoSolve() {
+                var AS3 = [16, 3, 11, 8, 9, 13, 8, 7, 7, 14, 16, 8, 11, 8, 10, 9, 12, 8, 9, 7, 12, 11, 12];
+                var AS6 = [14, 6, 16, 11, 6, 16, 12, 16, 9, 7, 7, 5, 6, 9, 13, 8, 8, 8, 13, 10, 7, 14, 7];
+                var AS7 = [11, 7, 16, 6, 16, 7, 9, 8, 17, 14, 13, 15, 11, 9, 13, 12, 12, 11, 10, 11, 8, 13, 9];
+                var AS12 = [8, 12, 6, 10, 13, 11, 13, 18, 11, 11, 17, 10, 6, 9, 10, 12, 10, 5, 8, 13, 11, 12, 9];
+                var AS15 = [14, 15, 11, 13, 8, 8, 5, 10, 5, 11, 11, 7, 5, 15, 6, 12, 7, 14, 17, 8, 11, 13, 15];
+                var AS16 = [6, 16, 11, 14, 13, 15, 12, 10, 9, 5, 13, 8, 10, 14, 13, 9, 11, 6, 4, 7, 15, 13, 13];
+                let l = 0;
+                
+                if (AS1 > 1) {
+                    
+                    for (let i = 1; i<5; i++){
+                        for (let j = 1; j<5; j++){
+                            if (ChemArray[l] > -1){
+                                document.getElementById(i+","+j+"i").value = eval("AS"+AS1)[ChemArray[l]];
+                            }
+                            l++;
+                        }
+                    }
+                }   
+            }
+            
+            function Finder(l) {
+                if (l == 16) {
+                    document.getElementById("Bitch").innerHTML = "The multiples of your m number are listed next to the number they are multiplied by. This allows you to look at Elvira's TV and find the single possible O number. In a case where two listed numbers will fit, check your acetaldehyde diamonds in the two possible colors. The diamonds listed below are only found in the correct color.";
+                } else if (l == 17) {
+                    document.getElementById("Bitch").innerHTML = "These are all six possible diamonds for acetaldehyde while in the correct color. You can find this board right outside Elvira's studio next to Bang Bangs. Just click the one you have and all the correct numbers will be entered above.";
+                } else {
+                document.getElementById("Bitch").innerHTML = ChemArray[l];
+                if (ChemArray[l] == 0){
+                    document.getElementById("Bitch").innerHTML = "Racing Fuel: Can be found just outide the garage.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_d24b81b3a32847989f514e4abf6e071f~mv2.jpg";
+                } else if (ChemArray[l] == 1) {
+                    document.getElementById("Bitch").innerHTML = "Insect Repellent: Can be found around the corner behind Up and Atoms.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_c8e0f0eaf2384b1ebd6b45dced9e1f2c~mv2.jpg";
+                } else if (ChemArray[l] == 2) {
+                    document.getElementById("Bitch").innerHTML = "Vodka: Can be found in the market opposite detergent.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_339f7cf8e9874b55ad5e407bb2578953~mv2.jpg";
+                } else if (ChemArray[l] == 3) {
+                    document.getElementById("Bitch").innerHTML = "Baking Soda: Can be found on a shelf in the market.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_da6beb7b7e944ac58e80f68c893f13e1~mv2.jpg";
+                } else if (ChemArray[l] == 4) {
+                    document.getElementById("Bitch").innerHTML = "Detergent: Can be found on the shelf in the market closest to the freeze trap.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_10599825bf3640dea858544ad4c1a4cd~mv2.jpg";
+                } else if (ChemArray[l] == 5) {
+                    document.getElementById("Bitch").innerHTML = "Drain Opener: Can be found in the RV park bathroom in the open stall.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_ada31afec25741f0b027ab47f7e00ce4~mv2.jpg";
+                } else if (ChemArray[l] == 6) {
+                    document.getElementById("Bitch").innerHTML = "Quarters: Take a crowbar and melee the payphones next to the garage.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_3e8cd2f0baab4feb8d90400db8fe2025~mv2.jpg";
+                } else if (ChemArray[l] == 7) {
+                    document.getElementById("Bitch").innerHTML = "Glass Cleaner: Can be found on the market on the lowest shelf as you enter from the street.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_e8a8dc080c994ca59fe70eff764d92f6~mv2.jpg";
+                } else if (ChemArray[l] == 8) {
+                    document.getElementById("Bitch").innerHTML = "Nail Polish Remover: Can be found on a desk in the room that has the M number in it.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_aeec33f1c01b45af91e5a795567afa68~mv2.jpg";
+                } else if (ChemArray[l] == 9) {
+                    document.getElementById("Bitch").innerHTML = "Pennies: Use a crowbar on a the cash register closest to the door.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_6b7aff3b407a487aab69a93b829cd620~mv2.jpg";
+                } else if (ChemArray[l] == 10) {
+                    document.getElementById("Bitch").innerHTML = "Plant Food: Found on the ground behind Quickies.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_fa72b85ef23b4e1a94934df997f7508c~mv2.jpg";
+                } else if (ChemArray[l] == 11) {
+                    document.getElementById("Bitch").innerHTML = "Paint: Found resting next to the cabin next to Racin' Stripes.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_3322d025b9034e6b9f72ac40ff912b71~mv2.jpg";
+                } else if (ChemArray[l] == 12) {
+                    document.getElementById("Bitch").innerHTML = "Vinegar: Found on a table in the back of the market.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_c45334fa5ee34e9c947c2e025e218262~mv2.jpg";
+                } else if (ChemArray[l] == 13) {
+                    document.getElementById("Bitch").innerHTML = "Motor Oil: Found on the ground between the nuke and chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_56b90c1ed01a43338d8087f391329480~mv2.jpg";
+                } else if (ChemArray[l] == 14) {
+                    document.getElementById("Bitch").innerHTML = "Wheel Cleaner: Found on a shelf in the market.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_8b5bc96af00d4206a77f2c8da085c848~mv2.jpg";
+                } else if (ChemArray[l] == 15) {
+                    document.getElementById("Bitch").innerHTML = "Acetaldehyde: Crafted at the chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_dc8442fb74c4477b992ccffa1f6853c2~mv2.jpg";
+                } else if (ChemArray[l] == 16) {
+                    document.getElementById("Bitch").innerHTML = "Methylybenzene: Crafted at the chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_dc8442fb74c4477b992ccffa1f6853c2~mv2.jpg";
+                } else if (ChemArray[l] == 17) {
+                    document.getElementById("Bitch").innerHTML = "Hexamine: Crafted at the chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_dc8442fb74c4477b992ccffa1f6853c2~mv2.jpg";
+                } else if (ChemArray[l] == 18) {
+                    document.getElementById("Bitch").innerHTML = "Phenosulfonic Acid: Crafted at the chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_dc8442fb74c4477b992ccffa1f6853c2~mv2.jpg";
+                } else if (ChemArray[l] == 19) {
+                    document.getElementById("Bitch").innerHTML = "Phenol: Crafted at the chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_dc8442fb74c4477b992ccffa1f6853c2~mv2.jpg";
+                } else if (ChemArray[l] == 20) {
+                    document.getElementById("Bitch").innerHTML = "Aldehyde Sludge: Crafted at the chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_dc8442fb74c4477b992ccffa1f6853c2~mv2.jpg";
+                } else if (ChemArray[l] == 21) {
+                    document.getElementById("Bitch").innerHTML = "Formaldehyde: Crafted at the chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_dc8442fb74c4477b992ccffa1f6853c2~mv2.jpg";
+                } else if (ChemArray[l] == 22) {
+                    document.getElementById("Bitch").innerHTML = "Dinitro: Crafted at the chemistry table.";
+                    document.getElementById("Bitch2").src = "https://static.wixstatic.com/media/89fb25_dc8442fb74c4477b992ccffa1f6853c2~mv2.jpg";
+                }
+                }
+            }
+            
+            function Bitches(numy) {
+                document.getElementById("image1").style = "default";
+                document.getElementById("image2").style = "default";
+                document.getElementById("image3").style = "default";
+                document.getElementById("image4").style = "default";
+                document.getElementById("image5").style = "default";
+                document.getElementById("image6").style = "default";
+                
+                if (numy == 1) {
+                    document.getElementById("image1").style = "border: 5px solid #555";
+                    AS1 = 3;
+                } else if (numy == 2) {
+                    document.getElementById("image2").style = "border: 5px solid #555";
+                    AS1 = 6;
+                } else if (numy == 3) {
+                    document.getElementById("image3").style = "border: 5px solid #555";
+                    AS1 = 7;
+                } else if (numy == 4) {
+                    document.getElementById("image4").style = "border: 5px solid #555";
+                    AS1 = 12;
+                } else if (numy == 5) {
+                    document.getElementById("image5").style = "border: 5px solid #555";
+                    AS1 = 15;
+                } else if (numy == 6) {
+                    document.getElementById("image6").style = "border: 5px solid #555";
+                    AS1 = 16;
+                } 
+                ChemicalSetup();
+            }
+            
+        </script>
+        
+    </head>
+
+    <body class="screen-container" onload="Reseter()">
+        
+        <div><h1>Attack Chemical Step Solver</h1>
+            <a href="https://www.youtube.com/@hjklfslol6446">Created by hjklfsl</a>
+            <p>Info and General Moral Support From Menno Bot</p>
+        </div>
+        
+        <div id="ChemicalSelectorDiv">
+        
+            <label for="ChemicalSelector">Chemical:</label>
+            <select id="ChemicalSelector" onchange="ChemicalSetup()">
+                <option>--</option>
+                <option value="1,3,5">1,3,5 Tera Nitra Phenol</option>
+                <option value="Octahydro">Octahydro 2,5 Nitro 347 Para-Zokine</option>
+                <option value="3-Methyl">3-Methyl-2,4 Di-Nitrobenzene</option>
+                <option value="Propane">3,4-Di-Nitroxy-Methyl Propane</option>
+            </select>
+        
+        </div>
+        
+        <div id="wrapper135er" class="wrapper135" style="visibility: hidden;">
+            <div id="1,1" style="visibility: hidden;"><label id="1,1l" for="1,1i"></label><input onchange="ToSumItUp()" id="1,1i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(0)"></div>
+            <div id="1,2" style="visibility: hidden;"><label id="1,2l" for="1,2i"></label><input onchange="ToSumItUp()" id="1,2i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(1)"></div>
+            <div id="1,3" style="visibility: hidden;"><label id="1,3l" for="1,3i"></label><input onchange="ToSumItUp()" id="1,3i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(2)"></div>
+            <div id="1,4" style="visibility: hidden;"><label id="1,4l" for="1,4i"></label><input onchange="ToSumItUp()" id="1,4i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(3)"></div>
+            <div id="1,5" style="display: grid; visibility: hidden;">  <img style="grid-column: 1; grid-row: 1" class="PleaseBeNormal" src="https://static.wixstatic.com/media/89fb25_dfbfbef50a62408aa2d879e56c035754~mv2.png"> <p style="grid-column: 1; grid-row: 1" id="1,5f">0</p></div>
+            <div id="2,1" style="visibility: hidden;"><label id="2,1l" for="2,1i"></label><input onchange="ToSumItUp()" id="2,1i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(4)"></div>
+            <div id="2,2" style="visibility: hidden;"><label id="2,2l" for="2,2i"></label><input onchange="ToSumItUp()" id="2,2i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(5)"></div>
+            <div id="2,3" style="visibility: hidden;"><label id="2,3l" for="2,3i"></label><input onchange="ToSumItUp()" id="2,3i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(6)"></div>
+            <div id="2,4" style="visibility: hidden;"><label id="2,4l" for="2,4i"></label><input onchange="ToSumItUp()" id="2,4i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(7)"></div>
+            <div id="2,5" style="display: grid; visibility: hidden;">  <img style="grid-column: 1; grid-row: 1" class="PleaseBeNormal" src="https://static.wixstatic.com/media/89fb25_dfbfbef50a62408aa2d879e56c035754~mv2.png"> <p style="grid-column: 1; grid-row: 1" id="2,5f">0</p></div>
+            <div id="3,1" style="visibility: hidden;"><label id="3,1l" for="3,1i"></label><input onchange="ToSumItUp()" id="3,1i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(8)"></div>
+            <div id="3,2" style="visibility: hidden;"><label id="3,2l" for="3,2i"></label><input onchange="ToSumItUp()" id="3,2i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(9)"></div>
+            <div id="3,3" style="visibility: hidden;"><label id="3,3l" for="3,3i"></label><input onchange="ToSumItUp()" id="3,3i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(10)"></div>
+            <div id="3,4" style="visibility: hidden;"><label id="3,4l" for="3,4i"></label><input onchange="ToSumItUp()" id="3,4i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(11)"></div>
+            <div id="3,5" style="display: grid; visibility: hidden;">  <img style="grid-column: 1; grid-row: 1" class="PleaseBeNormal" src="https://static.wixstatic.com/media/89fb25_dfbfbef50a62408aa2d879e56c035754~mv2.png"> <p style="grid-column: 1; grid-row: 1" id="3,5f">0</p></div>
+            <div id="4,1" style="visibility: hidden;"><label id="4,1l" for="4,1i"></label><input onchange="ToSumItUp()" id="4,1i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(12)"></div>
+            <div id="4,2" style="visibility: hidden;"><label id="4,2l" for="4,2i"></label><input onchange="ToSumItUp()" id="4,2i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(13)"></div>
+            <div id="4,3" style="visibility: hidden;"><label id="4,3l" for="4,3i"></label><input onchange="ToSumItUp()" id="4,3i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(14)"></div>
+            <div id="4,4" style="visibility: hidden;"><label id="4,4l" for="4,4i"></label><input onchange="ToSumItUp()" id="4,4i" type="text" maxlength="2" size="2"><img class="Ques" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png" onclick="Finder(15)"></div>
+            <div id="4,5" style="display: grid; visibility: hidden;">  <img style="grid-column: 1; grid-row: 1" class="PleaseBeNormal" src="https://static.wixstatic.com/media/89fb25_dfbfbef50a62408aa2d879e56c035754~mv2.png"> <p style="grid-column: 1; grid-row: 1" id="4,5f">0</p></div>
+        </div>
+        
+        <div class="Lower-Container">
+            
+            <div id="Lower-Left">
+                <div>
+                    <label for="mnum">M-Number: </label>
+                    <input type="number" id="mnum" onchange="MMults()">
+                    <img class="Ques" onclick="Finder(16)" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png">
+                </div>
+                <p id="Mults">Multiples of M: </p>
+                <label for="Onum">O-Number</label>
+                <input value="0" type="number" id="Onum" onchange="ToSumItUp()">
+                <br>
+                <br>
+                <label>Color: </label>
+                <select>
+                    <option>--</option>
+                    <option>Red</option>
+                    <option>Green</option>
+                    <option>Blue</option>
+                </select>
+        
+                <br>
+                <br>
+        
+                <label for="free">A Text Box For Your Convenience: </label>
+                <input id="free" type="text">
+        
+                <br>
+                <br>
+        
+                <div>
+                    <label>AutoSolver: </label> 
+                    <label>Select Your Acetaldehyde Diamond: </label>
+                    <img class="Ques" onclick="Finder(17)" src="https://static.wixstatic.com/media/89fb25_a1caa92900cb4382a99f152442bdba80~mv2.png">
+                </div>
+                    
+                <div> 
+                    <img id="image1" onclick="Bitches(1)" class="NumImages" src="https://static.wixstatic.com/media/89fb25_045ef995b2f34ea6a3d7051332413da5~mv2.png">
+                    <img id="image2" onclick="Bitches(2)" class="NumImages" src="https://static.wixstatic.com/media/89fb25_d0eeb6e17096464287f2d1eba81337a7~mv2.png">
+                    <img id="image3" onclick="Bitches(3)" class="NumImages" src="https://static.wixstatic.com/media/89fb25_5cf4f0d35de64b05bc031ca958886142~mv2.png">
+                    <img id="image4" onclick="Bitches(4)" class="NumImages" src="https://static.wixstatic.com/media/89fb25_3a63f4bd013f4b17a3f3994ed75db5d5~mv2.png">
+                    <img id="image5" onclick="Bitches(5)" class="NumImages" src="https://static.wixstatic.com/media/89fb25_2917ef79ceaf4f1f8ad6820a58656c65~mv2.png">
+                    <img id="image6" onclick="Bitches(6)" class="NumImages" src="https://static.wixstatic.com/media/89fb25_d85d6860a1884021845b9ec2bfdce9f5~mv2.png">
+                </div>
+            
+            </div>
+            
+            <div id="Lower-Right">
+                <p id="Bitch"></p>
+                <img id="Bitch2" class="Picture-Style">
+            </div>
+            
+        </div>
+        
+        
+    
+    
+
+
+
+
+
+
+</body></html>
